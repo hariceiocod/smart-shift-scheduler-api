@@ -158,6 +158,83 @@ settings in** .env:
 
 }
 
+###**Shift Management**
+
+**Get Shifts**
+
+Endpoint: GET /api/shifts
+
+**Response:**
+
+[
+  {
+    "_id": "60d21b4667d0d8992e610c85",
+    "date": "2025-02-10",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "max_employees": 10,
+    "assigned_employees": [],
+    "conflict": false,
+    "conflict_message": ""
+  }
+]
+
+**Create Shift**
+
+Endpoint: POST /api/shifts/create
+
+**Request Body:**
+
+{
+  "date": "2025-02-10",
+  "start_time": "09:00",
+  "end_time": "17:00",
+  "max_employees": 10
+}
+
+**Response:**
+
+{
+  "message": "Shift created successfully"
+}
+
+**Update Shift**
+
+Endpoint: PATCH /api/shifts/update
+
+**Request Body:**
+
+{
+  "shift_id": "60d21b4667d0d8992e610c86",
+  "date": "2025-02-11",
+  "start_time": "10:00",
+  "end_time": "18:00",
+  "max_employees": 12
+}
+
+**Response:**
+
+{
+  "message": "Shift updated successfully"
+}
+
+**Delete Shift**
+
+Endpoint: DELETE /api/shifts/delete
+
+**Request Body:**
+
+{
+  "shift_id": 1
+}
+
+**Response:**
+
+{
+  "message": "Shift deleted successfully"
+}
+
+
 ### **Employee Management**
 
 #### **Get Employees**
