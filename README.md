@@ -27,8 +27,8 @@ Ensure you have the following installed:
 **Clone the repository**:
 
 > git clone https://github.com/hariceiocod/smart-shift-scheduler-api.git
-
-cd your-repo
+>
+> cd smart-shift-scheduler-api
 
 **Install dependencies:**
 
