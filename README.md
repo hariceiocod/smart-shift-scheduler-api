@@ -42,17 +42,9 @@ Ensure you have the following installed:
 settings in** .env:
 
 > DB_CONNECTION=mongodb
-> 
 > DB_HOST=127.0.0.1
->
 > DB_PORT=27017
->
 > DB_DATABASE=your_database
-> 
-
-**Run database migrations (if applicable):**
-
-> php artisan migrate
 
 **Install and configure Sanctum:**
 
