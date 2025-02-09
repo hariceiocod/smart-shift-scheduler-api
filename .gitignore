@@ -1,0 +1,34 @@
+# Ignore node modules and dependencies
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+
+# Laravel environment files
+/.env
+/.env.*.backup
+/.env.local
+/.env.testing
+/.env.production
+/.env.example
+
+# IDE and system files
+/.vscode
+/.idea
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Laravel log and cache files
+/storage/logs
+/storage/framework/cache
+/storage/framework/sessions
+/storage/framework/testing
+/storage/framework/views
+
+# Composer and NPM lock files (optional)
+composer.lock
+yarn.lock
+pnpm-lock.yaml
