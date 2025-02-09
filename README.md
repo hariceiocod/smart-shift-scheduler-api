@@ -154,6 +154,13 @@ php artisan serve
 #### **Get Shifts**
 
 - **Endpoint:** `GET /api/shifts`
+- **Headers:**
+
+```json
+{
+  "Authorization": "Bearer your-auth-token"
+}
+```
 - **Response:**
 
 ```json
@@ -174,6 +181,13 @@ php artisan serve
 #### **Create Shift**
 
 - **Endpoint:** `POST /api/shifts/create`
+- **Headers:**
+
+```json
+{
+  "Authorization": "Bearer your-auth-token"
+}
+```
 - **Request Body:**
 
 ```json
@@ -196,6 +210,13 @@ php artisan serve
 #### **Update Shift**
 
 - **Endpoint:** `PATCH /api/shifts/update`
+- **Headers:**
+
+```json
+{
+  "Authorization": "Bearer your-auth-token"
+}
+```
 - **Request Body:**
 
 ```json
@@ -219,6 +240,13 @@ php artisan serve
 #### **Delete Shift**
 
 - **Endpoint:** `DELETE /api/shifts/delete`
+- **Headers:**
+
+```json
+{
+  "Authorization": "Bearer your-auth-token"
+}
+```
 - **Request Body:**
 
 ```json
@@ -305,6 +333,13 @@ php artisan serve
 #### **Get Assignments**
 
 - **Endpoint:** `GET /api/assignments`
+- **Headers:**
+
+```json
+{
+  "Authorization": "Bearer your-auth-token"
+}
+```
 - **Response:**
 
 ```json
@@ -322,6 +357,13 @@ php artisan serve
 #### **Update Assignment**
 
 - **Endpoint:** `POST /api/assignments/update`
+- **Headers:**
+
+```json
+{
+  "Authorization": "Bearer your-auth-token"
+}
+```
 - **Request Body:**
 
 ```json
@@ -342,6 +384,13 @@ php artisan serve
 #### **Auto Assign Employees**
 
 - **Endpoint:** `POST /api/assignments/auto-assign`
+- **Headers:**
+
+```json
+{
+  "Authorization": "Bearer your-auth-token"
+}
+```
 - **Response:**
 
 ```json
