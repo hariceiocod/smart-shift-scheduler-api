@@ -279,15 +279,28 @@ Endpoint: DELETE /api/shifts/delete
 
 ### **Assignment Management**
 
-#### **Update Assignment**
+**Get Assignments**
+Endpoint: GET /api/assignments
+
+**Response:**
+
+[
+  {
+    "_id": "60d21b4667d0d8992e610c85",
+    "shift_id": 2,
+    "start": "2025-02-10 09:00",
+    "end": "2025-02-10 17:00",
+    "employee_id": "60d21b4667d0d8992e610c87"
+  }
+]
+
+**Update Assignment**
 
 **Endpoint:** POST /api/assignments/update
 
 **Request Body:**
 
 {
-
-\"id\": \"650e5f2a2b3d4c6a8f9e7d1b\",
 
 \"employee_ids\": \[\"650e5f2a2b3d4c6a8f9e7d1b\",
 \"650e5f2a2b3d4c6a8f9e7d1c\"\],
