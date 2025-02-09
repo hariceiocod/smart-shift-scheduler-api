@@ -2,9 +2,7 @@
 
 ## **Overview**
 
-Smart Shift Scheduler Backend API is built using Laravel, MongoDB, and
-Sanctum for authentication. It provides endpoints for managing employee
-shifts and assignments.
+Smart Shift Scheduler Backend API is built using Laravel, MongoDB, and Sanctum for authentication. It provides endpoints for managing employee shifts and assignments.
 
 ## **Setup Instructions**
 
@@ -12,57 +10,60 @@ shifts and assignments.
 
 Ensure you have the following installed:
 
--   PHP (version 8.2.21)
-
--   Laravel Framework (version 10)
-
--   MongoDB
-
--   Composer
-
--   Sanctum for API authentication
+- PHP (>= 8.2.21)
+- Laravel Framework (>= 10)
+- MongoDB
+- Composer
+- Sanctum for API authentication
 
 ### **Installation**
 
-**Clone the repository**:
+#### **Clone the Repository**
 
-> git clone https://github.com/hariceiocod/smart-shift-scheduler-api.git
->
-> cd smart-shift-scheduler-api
+```sh
+git clone https://github.com/hariceiocod/smart-shift-scheduler-api.git
+cd smart-shift-scheduler-api
+```
 
-**Install dependencies:**
+#### **Install Dependencies**
 
-> composer install
+```sh
+composer install
+```
 
-**Configure environment variables:**
+#### **Configure Environment Variables**
 
-> cp .env.example .env
+```sh
+cp .env.example .env
+```
 
-**Update the necessary fields, particularly the MongoDB connection
-settings in** .env:
+Update the necessary fields, particularly the MongoDB connection settings in `.env`:
 
-> DB_CONNECTION=mongodb
-> 
-> DB_HOST=127.0.0.1
-> 
-> DB_PORT=27017
-> 
-> DB_DATABASE=your_database
-> 
+```ini
+DB_CONNECTION=mongodb
+DB_HOST=127.0.0.1
+DB_PORT=27017
+DB_DATABASE=your_database
+```
 
-**Install and configure Sanctum:**
+#### **Install and Configure Sanctum**
 
-> php artisan vendor:publish --provider=\"Laravel\\Sanctum\\SanctumServiceProvider\"
+```sh
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+php artisan migrate
+```
 
-> php artisan migrate
+#### **Run the Admin Seeder**
 
-**Run the Admin Seeder:**
+```sh
+php artisan db:seed --class=AdminSeeder
+```
 
-> php artisan db:seed \--class=AdminSeeder
+#### **Start the Backend Server**
 
-**Start the backend server:**
-
-> php artisan serve
+```sh
+php artisan serve
+```
 
 ## **API Documentation**
 
@@ -70,102 +71,92 @@ settings in** .env:
 
 #### **Register**
 
-**Endpoint:** POST /api/register
+- **Endpoint:** `POST /api/register`
+- **Request Body:**
 
-**Request Body:**
-
+```json
 {
-
-\"name\": \"John Doe\",
-
-\"email\": \"user@example.com\",
-
-\"password\": \"yourpassword\",
-
-\"max_hours_per_week\": 40,
-
-\"availability\": \[\"Monday\", \"Tuesday\", \"Wednesday\"\]
-
+  "name": "John Doe",
+  "email": "user@example.com",
+  "password": "yourpassword",
+  "max_hours_per_week": 40,
+  "availability": ["Monday", "Tuesday", "Wednesday"]
 }
+```
 
-**Response:**
+- **Response:**
 
+```json
 {
-
-\"message\": \"User registered successfully\",
-
-\"id\": \"650e5f2a2b3d4c6a8f9e7d1b\",
-
-\"name\": \"John Doe\",
-
-\"email\": \"user@example.com\",
-
-\"role\": \"employee\",
-
-\"max_hours_per_week\": 40,
-
-\"availability\": \[\"Monday\", \"Tuesday\", \"Wednesday\"\],
-
-\"created_at\": \"2025-02-09T12:00:00Z\",
-
-\"updated_at\": \"2025-02-09T12:00:00Z\",
-
-\"token\": \"your-auth-token\"
-
+  "message": "User registered successfully",
+  "id": "650e5f2a2b3d4c6a8f9e7d1b",
+  "name": "John Doe",
+  "email": "user@example.com",
+  "role": "employee",
+  "max_hours_per_week": 40,
+  "availability": ["Monday", "Tuesday", "Wednesday"],
+  "created_at": "2025-02-09T12:00:00Z",
+  "updated_at": "2025-02-09T12:00:00Z",
+  "token": "your-auth-token"
 }
+```
 
 #### **Login**
 
-**Endpoint:** POST /api/login
+- **Endpoint:** `POST /api/login`
+- **Request Body:**
 
-**Request Body:**
-
+```json
 {
-
-\"email\": \"user@example.com\",
-
-\"password\": \"yourpassword\"
-
+  "email": "user@example.com",
+  "password": "yourpassword"
 }
+```
 
-**Response:**
+- **Response:**
 
+```json
 {
-
-\"message\": \"User logged in successfully\",
-
-\"token\": \"your-auth-token\"
-
+  "message": "User logged in successfully",
+  "id": "650e5f2a2b3d4c6a8f9e7d1b",
+  "name": "John Doe",
+  "email": "user@example.com",
+  "role": "employee",
+  "max_hours_per_week": 40,
+  "availability": ["Monday", "Tuesday", "Wednesday"],
+  "created_at": "2025-02-09T12:00:00Z",
+  "updated_at": "2025-02-09T12:00:00Z",
+  "token": "your-auth-token"
 }
+```
 
 #### **Logout**
 
-**Endpoint:** POST /api/logout
+- **Endpoint:** `POST /api/logout`
+- **Headers:**
 
-**Headers:**
-
+```json
 {
-
-\"Authorization\": \"Bearer your-auth-token\"
-
+  "Authorization": "Bearer your-auth-token"
 }
+```
 
-**Response:**
+- **Response:**
 
+```json
 {
-
-\"message\": \"Successfully logged out\"
-
+  "message": "Successfully logged out"
 }
+```
 
-###**Shift Management**
+### **Shift Management**
 
-**Get Shifts**
+#### **Get Shifts**
 
-Endpoint: GET /api/shifts
+- **Endpoint:** `GET /api/shifts`
+- **Response:**
 
-**Response:**
-
+```json
 [
   {
     "_id": "60d21b4667d0d8992e610c85",
@@ -175,35 +166,39 @@ Endpoint: GET /api/shifts
     "max_employees": 10,
     "assigned_employees": [],
     "conflict": false,
-    "conflict_message": ""
+    "conflict_message": []
   }
 ]
+```
 
-**Create Shift**
+#### **Create Shift**
 
-Endpoint: POST /api/shifts/create
+- **Endpoint:** `POST /api/shifts/create`
+- **Request Body:**
 
-**Request Body:**
-
+```json
 {
   "date": "2025-02-10",
   "start_time": "09:00",
   "end_time": "17:00",
   "max_employees": 10
 }
+```
 
-**Response:**
+- **Response:**
 
+```json
 {
   "message": "Shift created successfully"
 }
+```
 
-**Update Shift**
+#### **Update Shift**
 
-Endpoint: PATCH /api/shifts/update
+- **Endpoint:** `PATCH /api/shifts/update`
+- **Request Body:**
 
-**Request Body:**
-
+```json
 {
   "shift_id": "60d21b4667d0d8992e610c86",
   "date": "2025-02-11",
@@ -211,127 +206,118 @@ Endpoint: PATCH /api/shifts/update
   "end_time": "18:00",
   "max_employees": 12
 }
+```
 
-**Response:**
+- **Response:**
 
+```json
 {
   "message": "Shift updated successfully"
 }
+```
 
-**Delete Shift**
+#### **Delete Shift**
 
-Endpoint: DELETE /api/shifts/delete
+- **Endpoint:** `DELETE /api/shifts/delete`
+- **Request Body:**
 
-**Request Body:**
-
+```json
 {
-  "shift_id": 1
+  "shift_id": 650e5f2a2b3d4c6a8f9e7d1d
 }
+```
 
-**Response:**
+- **Response:**
 
+```json
 {
   "message": "Shift deleted successfully"
 }
-
+```
 
 ### **Employee Management**
 
 #### **Get Employees**
 
-**Endpoint:** GET /api/employees
+- **Endpoint:** `GET /api/employees`
+- **Headers:**
 
-**Headers:**
-
+```json
 {
-
-\"Authorization\": \"Bearer your-auth-token\"
-
+  "Authorization": "Bearer your-auth-token"
 }
+```
 
-**Response:**
+- **Response:**
 
-\[
-
-{
-
-\"id\": \"650e5f2a2b3d4c6a8f9e7d1b\",
-
-\"name\": \"John Doe\",
-
-\"email\": \"user@example.com\",
-
-\"max_hours_per_week\": 40,
-
-\"availability\": \[\"Monday\", \"Tuesday\", \"Wednesday\"\],
-
-\"assigned_shifts\": \[\],
-
-\"conflict\": false,
-
-\"created_at\": \"2025-02-09T12:00:00Z\",
-
-\"updated_at\": \"2025-02-09T12:00:00Z\"
-
-}
-
-\]
+```json
+[
+  {
+    "id": "650e5f2a2b3d4c6a8f9e7d1b",
+    "name": "John Doe",
+    "email": "user@example.com",
+    "max_hours_per_week": 40,
+    "availability": ["Monday", "Tuesday", "Wednesday"],
+    "assigned_shifts": [],
+    "conflict": false,
+    "conflict_messages": [],
+    "created_at": "2025-02-09T12:00:00Z",
+    "updated_at": "2025-02-09T12:00:00Z"
+  }
+]
+```
 
 ### **Assignment Management**
 
-**Get Assignments**
-Endpoint: GET /api/assignments
+#### **Get Assignments**
 
-**Response:**
+- **Endpoint:** `GET /api/assignments`
+- **Response:**
 
+```json
 [
   {
     "_id": "60d21b4667d0d8992e610c85",
-    "shift_id": 2,
+    "shift_id": 650e5f2a2b3d4c6a8f9e7d1d,
     "start": "2025-02-10 09:00",
     "end": "2025-02-10 17:00",
     "employee_id": "60d21b4667d0d8992e610c87"
   }
 ]
+```
 
-**Update Assignment**
+#### **Update Assignment**
 
-**Endpoint:** POST /api/assignments/update
+- **Endpoint:** `POST /api/assignments/update`
+- **Request Body:**
 
-**Request Body:**
-
+```json
 {
-
-\"employee_ids\": \[\"650e5f2a2b3d4c6a8f9e7d1b\",
-\"650e5f2a2b3d4c6a8f9e7d1c\"\],
-
-\"shift_id\": \"650e5f2a2b3d4c6a8f9e7d1d\"
-
+  "employee_ids": ["650e5f2a2b3d4c6a8f9e7d1b", "650e5f2a2b3d4c6a8f9e7d1c"],
+  "shift_id": "650e5f2a2b3d4c6a8f9e7d1d"
 }
+```
 
-**Response:**
+- **Response:**
 
+```json
 {
-
-\"message\": \"Assignments updated successfully\"
-
+  "message": "Assignments updated successfully"
 }
+```
 
 #### **Auto Assign Employees**
 
-**Endpoint:** POST /api/assignments/auto-assign
+- **Endpoint:** `POST /api/assignments/auto-assign`
+- **Response:**
 
-**Response:**
-
+```json
 {
-
-\"message\": \"Employees auto assigned successfully\"
-
+  "message": "Employees auto assigned successfully"
 }
+```
 
 ## **Conclusion**
 
-This API serves as the backend for the Smart Shift Scheduler, managing
-employees, shifts, and assignments efficiently. Make sure to secure the
-API with proper authentication and validation checks for smooth
-functionality.
+This API serves as the backend for the Smart Shift Scheduler, managing employees, shifts, and assignments efficiently. Ensure the API is secured with proper authentication and validation checks for smooth functionality.
+
