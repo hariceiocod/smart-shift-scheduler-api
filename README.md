@@ -266,6 +266,39 @@ php artisan serve
   }
 ]
 ```
+#### **Show Employee**
+
+- **Endpoint:** `POST /api/employee`
+- **Headers:**
+
+```json
+{
+  "Authorization": "Bearer your-auth-token"
+}
+```
+- **Request Body:**
+
+```json
+{
+  "employee_id": "650e5f2a2b3d4c6a8f9e7d1d"
+}
+```
+
+- **Response:**
+
+```json
+[
+  {
+    "id": "650e5f2a2b3d4c6a8f9e7d1b",
+    "name": "John Doe",
+    "email": "user@example.com",
+    "max_hours_per_week": 40,
+    "availability": ["Monday", "Tuesday", "Wednesday"],
+    "created_at": "2025-02-09T12:00:00Z",
+    "updated_at": "2025-02-09T12:00:00Z"
+  }
+]
+```
 
 ### **Assignment Management**
 
@@ -278,7 +311,7 @@ php artisan serve
 [
   {
     "_id": "60d21b4667d0d8992e610c85",
-    "shift_id": 650e5f2a2b3d4c6a8f9e7d1d,
+    "shift_id": "650e5f2a2b3d4c6a8f9e7d1d",
     "start": "2025-02-10 09:00",
     "end": "2025-02-10 17:00",
     "employee_id": "60d21b4667d0d8992e610c87"
